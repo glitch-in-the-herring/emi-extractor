@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 
     for (int i = 0; i < file->file_count; i++)
     {
-        snprintf(buffer, 25, "%i.bin", i);
+        snprintf(buffer, 25, "%s_%i.bin", argv[1], i);
         extract_from_EMI_file(file, i, buffer);
     }
 
