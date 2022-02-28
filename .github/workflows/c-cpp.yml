@@ -13,7 +13,7 @@ jobs:
             - name: "Checkout"
               uses: actions/checkout@v2
             - name: "Build"
-              run: make
+              run: make all
             - name: "Package"
               run: |
                 zip "extractor-ubuntu.zip" emi_extractor
@@ -28,7 +28,7 @@ jobs:
             - name: "Checkout"
               uses: actions/checkout@v2
             - name: "Build"
-              run: make
+              run: make all
             - name: "Package"
               run: |
                 tar -a -c -f extractor-win.zip emi_extractor.zip
