@@ -1,0 +1,39 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+    Ubuntu:
+        runs-on: ubuntu-latest    
+        steps: 
+            - name: "Checkout"
+              uses: actions/checkout@v2
+            - name: "Build"
+              run: make
+            - name: "Package"
+              run: |
+                zip "extractor-ubuntu.zip" emi_extractor
+            - name: "Upload"
+              uses: actions/upload-artifact@v1
+              with:
+                name: "extractor-ubuntu-${{ github.sha }}.zip"
+                path: "extractor-ubuntu.zip"
+    Windows:
+        runs-on: windows-latest    
+        steps: 
+            - name: "Checkout"
+              uses: actions/checkout@v2
+            - name: "Build"
+              run: make
+            - name: "Package"
+              run: |
+                tar -a -c -f extractor-win.zip emi_extractor.zip
+            - name: "Upload"
+              uses: actions/upload-artifact@v1
+              with:
+                name: "extractor-win-${{ github.sha }}.zip"
+                path: "extractor-win.zip"
