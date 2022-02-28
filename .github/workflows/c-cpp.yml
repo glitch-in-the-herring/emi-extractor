@@ -31,7 +31,7 @@ jobs:
               run: make all
             - name: "Package"
               run: |
-                tar -a -c -f extractor-win.zip emi_extractor.zip
+                tar -a -c -f extractor-win.zip emi_extractor.exe
             - name: "Upload"
               uses: actions/upload-artifact@v1
               with:
